@@ -1,0 +1,43 @@
+.PreviewItem {
+    margin-bottom: 50px;
+    overflow: hidden;
+
+    .item_wrapper {
+        display: flex;
+        align-items: flex-start;
+        .img_box {
+            min-width: 100px;
+            min-height: 100px;
+            background-size: contain;
+            background-position: center;
+            margin-right: 10px;
+            background-repeat: no-repeat;
+        }
+
+        .info_box {
+            width: 100%;
+            flex-grow: 1;
+            text-overflow: ellipsis;
+            h4 {
+                margin: 0px;
+                // white-space: nowrap;
+                text-overflow: inherit;
+                overflow: inherit;
+                cursor: pointer;
+            }
+            .sub_text {
+                overflow: inherit;
+                font-family: "regular";
+                font-size: 0.8rem;
+                color: gray;
+                // white-space: nowrap;
+            }
+        }
+        .additional_box {
+            margin-top: 10px;
+            .badge {
+                margin-right: 10px;
+            }
+        }
+    }
+}

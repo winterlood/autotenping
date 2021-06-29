@@ -1,0 +1,54 @@
+.CategoryPage {
+    .page_head {
+        border-bottom: 1px solid rgb(234, 234, 236);
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .head_right_box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .head_btn {
+                font-size: 0.75rem;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                color: rgb(112, 112, 112);
+                outline: none;
+                padding: 0px 0.5rem;
+                font-weight: 400;
+            }
+            .head_btn:hover,
+            .on {
+                color: rgba(74, 144, 226, 1);
+            }
+        }
+    }
+
+    .btn-grad {
+        cursor: pointer;
+        font-family: bold;
+        background-image: linear-gradient(to right, #1fa2ff 0%, #12d8fa 51%, #1fa2ff 100%);
+    }
+    .btn-grad {
+        margin: 10px;
+        padding: 15px 45px;
+        text-align: center;
+        text-transform: uppercase;
+        transition: 0.5s;
+        background-size: 200% auto;
+        color: white;
+        box-shadow: 0 0 20px #eee;
+        border-radius: 10px;
+        display: block;
+    }
+
+    .btn-grad:hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+    }
+}

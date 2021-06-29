@@ -1,0 +1,119 @@
+@font-face {
+    font-family: "thin";
+    src: url("./../fonts/NotoSansCJKkr-Thin.otf") format("truetype");
+}
+@font-face {
+    font-family: "regular";
+    src: url("./../fonts/NotoSansCJKkr-Regular.otf") format("truetype");
+}
+@font-face {
+    font-family: "medium";
+    src: url("./../fonts/NotoSansCJKkr-Medium.otf") format("truetype");
+}
+@font-face {
+    font-family: "light";
+    src: url("./../fonts/NotoSansCJKkr-Light.otf") format("truetype");
+}
+@font-face {
+    font-family: "Bold";
+    src: url("./../fonts/NotoSansCJKkr-Bold.otf") format("truetype");
+}
+@font-face {
+    font-family: "Black";
+    src: url("./../fonts/NotoSansCJKkr-Black.otf") format("truetype");
+}
+html,
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+        Helvetica Neue, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+.badge {
+    padding: 5px;
+    background-color: rgba(242, 247, 252, 1);
+    border-radius: 5px;
+    color: rgba(74, 144, 226, 1);
+    font-family: medium;
+}
+
+h2 {
+    margin: 0px;
+}
+
+// MOBILE
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 20px;
+    }
+    h4 {
+        font-size: 13px;
+    }
+    .badge {
+        font-size: 10px;
+    }
+}
+
+// DESKTOP
+@media screen and (min-width: 768px) {
+    h2 {
+        font-size: 2rem;
+    }
+    h4 {
+        font-size: 1.1rem;
+    }
+    .badge {
+        font-size: 0.8rem;
+    }
+}
+h2 {
+    font-family: "bold";
+}
+h4 {
+    font-family: "bold";
+    margin: 0px;
+}
+
+h5 {
+    font-size: 1rem;
+    font-family: bold;
+    margin: 0px;
+}
+
+.vertical_bar {
+    background-color: rgb(234, 234, 236);
+    height: 0.75rem;
+    width: 1px;
+}
+
+.promote_btn {
+    margin-top: 20px;
+    border-radius: 8px;
+    color: white;
+    font-family: bold;
+    text-align: center;
+
+    background-image: linear-gradient(to right, #ff512f 0%, #dd2476 51%, #ff512f 100%);
+
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+}
+.promote_btn:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}

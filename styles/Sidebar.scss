@@ -1,0 +1,67 @@
+.Sidebar {
+    margin-top: 2rem;
+    display: block;
+    .sidebar_wrapper {
+        display: block;
+        position: sticky;
+        top: 5.5rem;
+
+        .head_box {
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1em;
+            margin-top: 0px;
+            margin-bottom: 0.75rem;
+            font-family: medium;
+            cursor: pointer;
+
+            display: flex;
+            justify-content: space-between;
+
+            svg {
+                color: rgb(142, 142, 142);
+                border-radius: 1rem;
+                padding: 1px;
+                transform: none;
+            }
+        }
+
+        .head_box:hover svg {
+            background-color: rgba(242, 247, 252, 1);
+            color: rgba(74, 144, 226, 1);
+        }
+
+        .main_box {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: black;
+            display: block;
+            margin-top: 10px;
+
+            button {
+                font-size: 0.875rem;
+                display: block;
+                color: rgb(112, 112, 112);
+                padding: 0.375rem 0.375rem 0.375rem 0.5rem;
+                border: none;
+                background-color: transparent;
+                width: 100%;
+                text-align: left;
+                outline: none;
+                line-height: 1em;
+                margin-bottom: 0.5rem;
+                cursor: pointer;
+                font-family: "regular";
+            }
+            button:hover,
+            .on {
+                background-color: rgba(242, 247, 252, 1);
+                border-radius: 0.75rem;
+                color: rgba(74, 144, 226, 1);
+            }
+            .on {
+            }
+        }
+    }
+}
