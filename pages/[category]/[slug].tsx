@@ -2,7 +2,6 @@ import Layout from "component/Layout";
 import Sidebar from "component/Sidebar";
 import { getDetailPages, getSlugPageData } from "lib/data";
 import React, { useState, useEffect } from "react";
-import { BsLink } from "react-icons/bs";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 type Props = {};
@@ -54,8 +53,8 @@ const DetailPage = ({ pageData }) => {
                     <p>
                         <br />
                     </p>
-                    {pageData.ContentMemo.split("\n").map((it) => (
-                        <p>{it || " "}</p>
+                    {pageData.ContentMemo.split("\n").map((it, idx) => (
+                        <p key={`contentmemo:${idx}`}>{it}</p>
                     ))}
                     <p>
                         <b>아래 버튼을 눌러 더 자세한 내용을 확인하세요!</b>
@@ -66,8 +65,8 @@ const DetailPage = ({ pageData }) => {
                 </a>
 
                 <div className="page_slide">
-                    {Object.values(pageData.Images).map((it: string) => (
-                        <div>
+                    {Object.values(pageData.Images).map((it: string, idx: number) => (
+                        <div key={`slideimg:${idx}`}>
                             <img src={it} alt={it} />
                         </div>
                     ))}

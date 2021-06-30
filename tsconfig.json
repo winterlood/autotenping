@@ -2,11 +2,9 @@
   "compilerOptions": {
     "baseUrl":".",
     "paths":{
-        "components/*":["components/*"],
-        "config/*":["config/*"],
+        "component/*":["component/*"],
         "pages/*":["pages/*"],
         "styles/*":["styles/*"],
-        "posts/*":["posts/*"]
       },
     "target": "es5",
     "lib": [
@@ -25,13 +23,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "scripts/postbuild.js"  ],
+    ],
   "exclude": [
     "node_modules"
   ]

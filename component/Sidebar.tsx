@@ -11,7 +11,7 @@ const SidbarButton = (props) => {
     return (
         <div>
             <Link href={link}>
-                <button className={props.isNow && "on"}>{name}</button>
+                <button className={props.isNow ? "on" : ""}>{name}</button>
             </Link>
         </div>
     );
