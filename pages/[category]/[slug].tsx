@@ -4,14 +4,26 @@ import { getDetailPages, getSlugPageData } from "lib/data";
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import Disqus from "component/Disqus";
 type Props = {};
+
 const DetailPage = ({ pageData }) => {
     const DynamicCupDynamic = dynamic(() => import("component/CupAd"));
     const { ContentID, ContentTitle, ContentMemo, CategoryName, OsType, ApprovalRate, LImage, SImage } = pageData;
+
     return (
         <Layout>
             <Head>
                 <title>{ContentTitle}</title>
+                <meta name="description" content={ContentMemo} />
+                <meta property="og:site_name" content={"소문내자"} />
+                <meta property="og:type" content={"article"} />
+                <meta property="og:title" content={ContentTitle} />
+                <meta property="og:url" content={pageData.Link} />
+                <meta property="og:image" content={pageData.Images.size1024x500} />
+                <meta property="og:description" content={ContentMemo} />
+                <meta property="og:locale" content="ko_KR" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
             </Head>
             <article className="DetailPage">
                 <div className="badge_box">
@@ -72,6 +84,7 @@ const DetailPage = ({ pageData }) => {
                     ))}
                 </div>
                 <DynamicCupDynamic />
+                <Disqus />
             </article>
         </Layout>
     );

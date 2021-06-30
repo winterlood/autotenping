@@ -76,7 +76,7 @@ export function getCategoryPageData(category: gtypes.category) {
     } else {
         const targetFilePath = path.join(dataDirectory, `${category}.json`);
         const fileContent = JSON.parse(fs.readFileSync(targetFilePath, "utf8"));
-        return fileContent;
+        return { ...fileContent, thumbnailUrl: getThumbnailByCategory(fileContent.category) };
     }
 }
 

@@ -22,6 +22,9 @@ function MyApp({ Component, pageProps }) {
                 <script dangerouslySetInnerHTML={{ __html: googleAnalyticsTag }}></script>
                 <meta name="naver-site-verification" content="5fee2f4cf8523c85c56fb671ece341cb3b03e9b1" />
                 <meta name="msvalidate.01" content="D6A67E754ABDD8C96AF1B1CDCDE1AD99" />
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <meta name={"viewport"} content="width=device-width, initial-scale=1" />
+                <meta name="robots" content="index, follow" />
             </Head>
             <Component {...pageProps} />
         </>

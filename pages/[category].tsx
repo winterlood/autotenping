@@ -55,6 +55,10 @@ const ContentArticleList = ({ pageData }) => {
 
     return (
         <>
+            <Head>
+                <meta property="og:description" content={data.map((it) => it.ContentTitle).join(", ")} />
+                <meta property="og:image" content={pageData.thumbnailUrl} />
+            </Head>
             <div className="page_head">
                 <h5>{topics[topics.findIndex((it) => it.link === router.asPath)].name}</h5>
                 <div className="head_right_box">
@@ -92,6 +96,7 @@ type ContentItem = {
     item_count: number;
     thumbnailUrl: string;
     link: string;
+    korCategory?: string;
 };
 type ContentHomeProps = {
     pageData: Array<ContentItem>;
@@ -99,13 +104,19 @@ type ContentHomeProps = {
 const ContentHome = ({ pageData }: ContentHomeProps) => {
     console.log(pageData);
 
+    const curPageData = pageData.map((pageItem) => {
+        return {
+            ...pageItem,
+            korCategory: topics[topics.findIndex((it) => it.link === `/${pageItem.category}`)].name,
+        };
+    });
     const ContentBoxItem = (props: ContentItem) => {
         return (
             <Link href={props.link}>
                 <div className="ContentBoxItem">
                     <div className="img_box" style={{ backgroundImage: `url('${props.thumbnailUrl}')` }}></div>
                     <div className="info_box">
-                        <h5>{props.category}</h5>
+                        <h5>{props.korCategory}</h5>
                         <label>{props.item_count}개의 소식이 있어요</label>
                     </div>
                 </div>
@@ -115,13 +126,19 @@ const ContentHome = ({ pageData }: ContentHomeProps) => {
 
     return (
         <>
+            <Head>
+                <meta
+                    property="og:description"
+                    content={curPageData.map((it) => `${it.korCategory.split(" ")[1]}${it.item_count}개`).join(", ")}
+                />
+                {/* <meta property="og:image" content={pageData.thumbnailUrl} /> */}
+            </Head>
             <div className="page_head">
                 <h5>🏡 홈</h5>
             </div>
             <article className="ContentHome">
-                {pageData.map((pageItem, idx) => {
-                    const category = topics[topics.findIndex((it) => it.link === `/${pageItem.category}`)].name;
-                    return <ContentBoxItem key={`contentbox:${idx}`} {...pageItem} category={category} />;
+                {curPageData.map((pageItem, idx) => {
+                    return <ContentBoxItem key={`contentbox:${idx}`} {...pageItem} />;
                 })}
             </article>
         </>
@@ -130,13 +147,20 @@ const ContentHome = ({ pageData }: ContentHomeProps) => {
 
 const Content = ({ pageData }) => {
     const router = useRouter();
-    console.log(router.asPath);
+
+    const pageTitle = `소문내자 - ${topics[topics.findIndex((it) => it.link === router.asPath)].name.split(" ")[1]}`;
     return (
         <Layout>
             <Head>
-                <title>
-                    소문내자 - {topics[topics.findIndex((it) => it.link === router.asPath)].name.split(" ")[1]}
-                </title>
+                <title>{pageTitle}</title>
+
+                <meta name="description" content={pageTitle} />
+                <meta property="og:site_name" content={"소문내자"} />
+                <meta property="og:type" content={"article"} />
+                <meta property="og:title" content={pageTitle} />
+                <meta property="og:image" content={pageData.thumbnailUrl} />
+                <meta property="og:locale" content="ko_KR" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
             </Head>
             <div className="CategoryPage">
                 {router.asPath !== "/home" && <ContentArticleList pageData={pageData} />}
