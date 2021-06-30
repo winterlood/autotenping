@@ -31,7 +31,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "scripts/postbuild.js"  ],
   "exclude": [
     "node_modules"
   ]

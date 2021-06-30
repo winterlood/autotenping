@@ -8,12 +8,14 @@ import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 
 const CONTENT_LIST_SIZE = 100;
-const Content = ({ pageData }) => {
+
+const ContentArticleList = ({ pageData }) => {
     const [isFinal, setIsFinal] = useState<boolean>(false);
     const [filter, setFilter] = useState<"all" | "best" | "hot">("all");
     const [renderData, setRenderData] = useState<Array<any>>([]);
     const { data } = pageData;
     const router = useRouter();
+    console.log(router.asPath);
 
     useEffect(() => {
         setRenderData(data.slice(0, CONTENT_LIST_SIZE));
@@ -52,44 +54,100 @@ const Content = ({ pageData }) => {
     };
 
     return (
-        <Layout>
-            <Head>
-                <title>Acha - {topics[topics.findIndex((it) => it.link === router.asPath)].name.split(" ")[1]}</title>
-            </Head>
-            <div className="CategoryPage">
-                <div className="page_head">
-                    <h5>{topics[topics.findIndex((it) => it.link === router.asPath)].name}</h5>
-                    <div className="head_right_box">
-                        <button onClick={() => setFilter("all")} className={`head_btn ${filter === "all" ? "on" : ""}`}>
-                            전체
-                        </button>
-                        <div className="vertical_bar" />
-                        <button
-                            onClick={() => setFilter("best")}
-                            className={`head_btn ${filter === "best" ? "on" : ""}`}
-                        >
-                            BEST
-                        </button>
-                        <div className="vertical_bar" />
-                        <button onClick={() => setFilter("hot")} className={`head_btn ${filter === "hot" ? "on" : ""}`}>
-                            HOT
-                        </button>
-                    </div>
+        <>
+            <div className="page_head">
+                <h5>{topics[topics.findIndex((it) => it.link === router.asPath)].name}</h5>
+                <div className="head_right_box">
+                    <button onClick={() => setFilter("all")} className={`head_btn ${filter === "all" ? "on" : ""}`}>
+                        전체
+                    </button>
+                    <div className="vertical_bar" />
+                    <button onClick={() => setFilter("best")} className={`head_btn ${filter === "best" ? "on" : ""}`}>
+                        BEST
+                    </button>
+                    <div className="vertical_bar" />
+                    <button onClick={() => setFilter("hot")} className={`head_btn ${filter === "hot" ? "on" : ""}`}>
+                        HOT
+                    </button>
                 </div>
-                <div>
+            </div>
+            {router.asPath !== "/home" && (
+                <article>
                     {renderData.map((it, idx) => (
                         <PreviewItem key={`${it.CampaignType}${it.ContentID}`} {...it} />
                     ))}
-                </div>
-                {/* <div onClick={() => loadMore()} className="btn-grad">
+                </article>
+            )}
+            {router.asPath === "/home" && <article>HOME</article>}
+
+            {/* <div onClick={() => loadMore()} className="btn-grad">
                     더보기
                 </div> */}
+        </>
+    );
+};
+
+type ContentItem = {
+    category: string;
+    item_count: number;
+    thumbnailUrl: string;
+    link: string;
+};
+type ContentHomeProps = {
+    pageData: Array<ContentItem>;
+};
+const ContentHome = ({ pageData }: ContentHomeProps) => {
+    console.log(pageData);
+
+    const ContentBoxItem = (props: ContentItem) => {
+        return (
+            <Link href={props.link}>
+                <div className="ContentBoxItem">
+                    <div className="img_box" style={{ backgroundImage: `url('${props.thumbnailUrl}')` }}></div>
+                    <div className="info_box">
+                        <h5>{props.category}</h5>
+                        <label>{props.item_count}개의 소식이 있어요</label>
+                    </div>
+                </div>
+            </Link>
+        );
+    };
+
+    return (
+        <>
+            <div className="page_head">
+                <h5>🏡 홈</h5>
+            </div>
+            <article className="ContentHome">
+                {pageData.map((pageItem, idx) => {
+                    const category = topics[topics.findIndex((it) => it.link === `/${pageItem.category}`)].name;
+                    return <ContentBoxItem key={`contentbox:${idx}`} {...pageItem} category={category} />;
+                })}
+            </article>
+        </>
+    );
+};
+
+const Content = ({ pageData }) => {
+    const router = useRouter();
+    console.log(router.asPath);
+    return (
+        <Layout>
+            <Head>
+                <title>
+                    소문내자 - {topics[topics.findIndex((it) => it.link === router.asPath)].name.split(" ")[1]}
+                </title>
+            </Head>
+            <div className="CategoryPage">
+                {router.asPath !== "/home" && <ContentArticleList pageData={pageData} />}
+                {router.asPath === "/home" && <ContentHome pageData={pageData} />}
             </div>
         </Layout>
     );
 };
 export async function getStaticProps({ params }) {
     console.log(params.category);
+
     const pageData = getCategoryPageData(params.category);
     return {
         props: {

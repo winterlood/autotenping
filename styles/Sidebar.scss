@@ -1,6 +1,21 @@
 .Sidebar {
     margin-top: 2rem;
     display: block;
+
+    // MOBILE
+    @media screen and (max-width: 768px) {
+        .desktop {
+            display: none;
+        }
+    }
+
+    // DESKTOP
+    @media screen and (min-width: 768px) {
+        .main_box_mobile {
+            display: none;
+        }
+    }
+
     .sidebar_wrapper {
         display: block;
         position: sticky;
@@ -62,6 +77,19 @@
             }
             .on {
             }
+        }
+
+        .main_box_mobile {
+            select {
+                width: 100%;
+                height: 40px;
+                text-align: center;
+                border: 1px solid #eaeaec;
+                background-color: #f6f6f6;
+                font-family: "regular";
+                border-radius: 5px;
+            }
+            margin-bottom: -30px;
         }
     }
 }

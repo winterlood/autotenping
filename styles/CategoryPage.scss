@@ -28,27 +28,68 @@
         }
     }
 
-    .btn-grad {
-        cursor: pointer;
-        font-family: bold;
-        background-image: linear-gradient(to right, #1fa2ff 0%, #12d8fa 51%, #1fa2ff 100%);
-    }
-    .btn-grad {
-        margin: 10px;
-        padding: 15px 45px;
-        text-align: center;
-        text-transform: uppercase;
-        transition: 0.5s;
-        background-size: 200% auto;
-        color: white;
-        box-shadow: 0 0 20px #eee;
-        border-radius: 10px;
-        display: block;
-    }
+    .ContentHome {
+        display: grid;
+        gap: 32px;
 
-    .btn-grad:hover {
-        background-position: right center; /* change the direction of the change here */
-        color: #fff;
-        text-decoration: none;
+        @media (min-width: 320px) {
+            /* smartphones, iPhone, portrait 480x320 phones */
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 481px) {
+            /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+            grid-template-columns: 1fr 1fr;
+        }
+        @media (min-width: 641px) {
+            /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+            grid-template-columns: 1fr 1fr;
+        }
+        @media (min-width: 961px) {
+            /* tablet, landscape iPad, lo-res laptops ands desktops */
+            grid-template-columns: 1fr 1fr;
+        }
+        @media (min-width: 1025px) {
+            /* big landscape tablets, laptops, and desktops */
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        @media (min-width: 1281px) {
+            /* hi-res laptops and desktops */
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .ContentBoxItem {
+            cursor: pointer;
+            border-radius: 5px;
+            // background: rgba(250, 250, 250, 1);
+            overflow: hidden;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+            .img_box {
+                height: 150px;
+                background-repeat: no-repeat;
+                background-position: center;
+                @media (min-width: 320px) {
+                    /* smartphones, iPhone, portrait 480x320 phones */
+                    height: 100px;
+                }
+                @media (min-width: 481px) {
+                    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+                    height: 100px;
+                }
+            }
+            .info_box {
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                label {
+                    font-family: "regular";
+                    color: gray;
+                }
+            }
+        }
+        .ContentBoxItem:hover .info_box {
+            color: rgba(74, 144, 226, 1);
+        }
     }
 }

@@ -39,7 +39,7 @@ CATEGORY_LIST = [
     {"Code": 210000, "Name": "엔터테인먼트",    "Eng": "entertainment"},
     {"Code": 220000, "Name": "사회",            "Eng": "social"},
     {"Code": 230000, "Name": "기타",            "Eng": "others"},
-    {"Code": 240000, "Name": "성인",            "Eng": "adult"},
+    # {"Code": 240000, "Name": "성인",            "Eng": "adult"},
 ]
 
 

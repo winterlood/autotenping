@@ -8,7 +8,7 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
             <Header />
             <div className="Layout">
                 <Sidebar />
-                <div className="article">{children}</div>
+                <section className="main_section">{children}</section>
             </div>
         </>
     );

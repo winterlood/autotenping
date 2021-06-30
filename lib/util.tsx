@@ -16,5 +16,4 @@ export const topics = [
     { name: "🎙️ 엔터테인먼트", link: "/entertainment" },
     { name: "🌍 사회", link: "/social" },
     { name: "🦠 기타", link: "/others" },
-    { name: "🔞 성인", link: "/adult" },
 ];
