@@ -6,7 +6,7 @@ import "styles/Header.scss";
 import "styles/CategoryPage.scss";
 import "styles/DetailPage.scss";
 import Head from "next/head";
-const gaTag = `
+const googleAnalyticsTag = `
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

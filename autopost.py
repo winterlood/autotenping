@@ -14,6 +14,7 @@ CAMPAIGN_DICT['INSTALL'] = '8'          # 설치-실행형
 CAMPAIGN_DICT['PARTICIPANT'] = '64'     # 참가형
 CAMPAIGN_DICT['SELL'] = '4'             # 판매형
 
+
 CAMPAIGN_LIST = [
     {'type': 'click', 'value': '128'},
     {'type': 'click_stay', 'value': '1'},
