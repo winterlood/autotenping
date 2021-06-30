@@ -70,7 +70,7 @@ def isValidAd(CONTENT_ID):
 
 def getCurrentCategory():
     # GET CUR CATEOGORY
-    filesPath = f'{now_path}\\_data\\'
+    filesPath = f'{now_path}/_data/'
     fileNameWithModifyList = []
 
     for f_name in os.listdir(f"{filesPath}"):
@@ -107,7 +107,7 @@ def main():
     print("CUR CATEOGORY : ", curCategory)
 
     # STEP 2 : GET NEW AD DATA
-    curFilePath = f"{now_path}\\_data\\{curCategory}.json"
+    curFilePath = f"{now_path}/_data/{curCategory}.json"
     existList = []
     newItemList = []
     try:
