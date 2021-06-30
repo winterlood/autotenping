@@ -2,12 +2,8 @@
 name: Run Tenping API
 
 on:
-  push:
-    branches:
-      - main
-# on:
-#      schedule:
-#          - cron: "0 */2 * * *"
+     schedule:
+         - cron: "0 */3 * * *"
 jobs:
     build:
         runs-on: ubuntu-latest
