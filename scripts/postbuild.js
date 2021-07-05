@@ -10,19 +10,21 @@ const writeRobotsTxt = () => {
     const robot = `
     User-agent: *
     Allow: /
-    Sitemap: ${HOSTNAME}/sitemap.xml
+    Sitemap: ${HOSTNAME}sitemap.xml
     `;
     fs.writeFileSync(path.join("./.next/static", "robots.txt"), robot);
 };
 
 const getCategoryPages = () => {
-    const pathList = [{ params: { category: "home" } }];
+    const pathList = [`${HOSTNAME}home`];
     const fileNames = fs.readdirSync(dataDirectory);
     const categoryList = fileNames.map((it) => it.split(".")[0]);
 
     categoryList.forEach((category) => {
         pathList.push(`${HOSTNAME}${category}`);
+        console.log(`${HOSTNAME}${category}`);
     });
+
     return pathList;
 };
 
@@ -41,8 +43,10 @@ const getDetailPages = () => {
         const paths = getPathListByCategory(category);
         paths.forEach((it) => {
             pathList.push(`${HOSTNAME}${category}/${it}`);
+            console.log(`${HOSTNAME}${category}/${it}`);
         });
     });
+
     return pathList;
 };
 
